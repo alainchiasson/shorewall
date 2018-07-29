@@ -1,0 +1,7 @@
+---
+# tasks file for shorewall
+- name: Install Shorewall
+  pacman:
+    name: shorewall
+    state: present
+  when: ansible_os_family == 'Archlinux'

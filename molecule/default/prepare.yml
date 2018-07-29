@@ -1,0 +1,13 @@
+---
+- name: Converge
+  hosts: all
+  # Install python3 - using raw ssh since ansible requires it.
+  gather_facts: false
+  tasks:
+    - name: Install Python3 for ansible
+      raw: test -e /usr/bin/python || (pacman -Sy && pacman -Sy --noconfirm python)
+    - name: gather facts now that we can.
+      setup:
+    - name: dump some debug info
+      debug:
+        msg: "{{ansible_os_family}}"
